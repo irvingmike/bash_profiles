@@ -4,25 +4,23 @@
 # Aaron Anderson
 # --------------------------------------------------
 
-source ~/.profile
-
 # --------------------------------------------------
 # Terminal prompt configuration
 # --------------------------------------------------
 
-export PS1="\n---------- \d, \t ----------------------------------------------------------------------------------------------------\n[\u@\h]:\w\n\[$(tput bold)\]\[\033[38;5;34m\]---\[$(tput sgr0)\]\[\033[38;5;21m\]\$git_branch\$git_dirty\[$(tput sgr0)\]\[\033[38;5;34m\]->\[$(tput sgr0)\] "
+export PS1="\n---------- \d, \t --------------------------------------------------------------------\n[\u@\h]:\w\n\[$(tput bold)\]\[\033[38;5;34m\]---\[$(tput sgr0)\]\[\033[38;5;21m\]\$git_branch\[\e[31m\]\$git_dirty\[$(tput bold)\]\[\033[38;5;34m\]->\[$(tput sgr0)\] "
 
 # --------------------------------------------------
 # Adding the git variables
 # --------------------------------------------------
+
 export GITAWAREPROMPT=~/.bash/git-aware-prompt
 source "${GITAWAREPROMPT}/main.sh"
-
 
 # --------------------------------------------------
 # Enabling git auto-complete
 # --------------------------------------------------
-# source ~/git-completion.bash
+
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
@@ -48,10 +46,3 @@ newGitBranch() {
     git branch --set-upstream-to=origin/$1 $1
 }
 alias gnewb=newGitBranch
-
-# Enterprise Java Commands
-alias cdtomcat='cd /opt/tomcat'
-alias cdsql='cd /usr/local/mysql/bin'
-alias tcup='/opt/tomcat/bin/startup.sh'
-alias tcdown='/opt/tomcat/bin/shutdown.sh'
-
